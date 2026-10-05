@@ -2,6 +2,7 @@
 #include <string>
 #include <thread>
 #include <chrono>
+#include <cmath>
 
 using namespace std;
 
@@ -22,14 +23,7 @@ int main(){
     int yVal;
     for(int i=0; i<Size;i++){
     yVal = k*i+m;
-    cout << endl;
-
-    cout << "i / X = "  << i << endl;
-    cout << "yVal:" << endl;
-    cout << k << " * " << i << " + " << m << " = " << yVal << endl; // Y value for x
-
-    cout << endl;
-    
+    cout << yVal << endl;
     if(yVal >= 0 && yVal < Size){
     grid[yVal][i] = "@ ";
     }
@@ -46,7 +40,7 @@ int main(){
     cout << y << "\t";
         for(int x=0; x<Size;x++){  
             cout << grid[y][x] << flush;
-            this_thread::sleep_for(chrono::microseconds(500));
+           //this_thread::sleep_for(chrono::milliseconds(1));
         }
         cout << endl;
     }
