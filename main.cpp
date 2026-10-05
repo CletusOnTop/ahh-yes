@@ -6,7 +6,7 @@
 using namespace std;
 
 int main(){
-    const int Size = 10;
+    const int Size = 15;
 
     string grid[Size][Size];
     
@@ -14,7 +14,7 @@ int main(){
     //Init grid - set all values to .
     for(int x=0; x<Size;x++){
         for(int y=0; y<Size;y++){  
-            grid[y][x] = ".  ";
+            grid[y][x] = ". ";
         }
     }
 
@@ -26,7 +26,7 @@ int main(){
     for(int x=0; x<Size;x++){
         for(int y=0; y<Size;y++){  
             cout << grid[y][x] << flush;
-            this_thread::sleep_for(chrono::milliseconds(10));
+            this_thread::sleep_for(chrono::milliseconds(5));
         }
         cout << endl;
     }
