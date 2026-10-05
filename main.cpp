@@ -9,8 +9,10 @@ using namespace std;
 
 int main(){
     const int Size = 80;
-    const double k = 1.000;
-    const double m = 38.000;
+    const double xMin = -10.0;
+    const double xMax = 10.0;
+    const double yMin = -1.0;
+    const double yMax = 1.0;
     string grid[Size][Size];
     
 
@@ -22,18 +24,14 @@ int main(){
     }
 
 
-    //Calc the damm graph
-    double yVal;
+    // Sample the function across the selected x range and map it to grid cells.
     for(int i=0; i<Size;i++){
-    double x = i / 5.0000;
-    //yVal = sin(x) * 40 + m;
-    yVal = x*x;
-    cout << fixed << setprecision(2) << yVal << endl;
-    int gridY = static_cast<int>(round(yVal));
-    if(gridY >= 0 && gridY < Size){
-    grid[gridY][i] = "@ ";
-    }
-
+        double x = xMin + i * (xMax - xMin) / (Size - 1);
+        double yVal = sin(x);
+        if(yVal >= yMin && yVal <= yMax){
+            int gridY = static_cast<int>(round((yVal - yMin) * (Size - 1) / (yMax - yMin)));
+            grid[gridY][i] = "@ ";
+        }
     }
 
     
@@ -43,7 +41,8 @@ int main(){
     //Outputs the grid
  for(int y=Size-1; y>=0;y--){
 
-    cout << y << "\t";
+     double yLabel = yMin + y * (yMax - yMin) / (Size - 1);
+     cout << fixed << setprecision(2) << yLabel << "\t";
         for(int x=0; x<Size;x++){  
             cout << grid[y][x] << flush;
            //this_thread::sleep_for(chrono::milliseconds(2));
