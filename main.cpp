@@ -3,13 +3,14 @@
 #include <thread>
 #include <chrono>
 #include <cmath>
+#include <iomanip>
 
 using namespace std;
 
 int main(){
     const int Size = 40;
-    const int k = 1;
-    const int m = 0;
+    const double k = 1.0;
+    const double m = 0.0;
     string grid[Size][Size];
     
 
@@ -20,12 +21,13 @@ int main(){
         }
     }
 
-    int yVal;
+    double yVal;
     for(int i=0; i<Size;i++){
-    yVal = k*i+m;
-    cout << yVal << endl;
-    if(yVal >= 0 && yVal < Size){
-    grid[yVal][i] = "@ ";
+    yVal = k * i + m;
+    cout << fixed << setprecision(2) << yVal << endl;
+    int gridY = static_cast<int>(round(yVal));
+    if(gridY >= 0 && gridY < Size){
+    grid[gridY][i] = "@ ";
     }
 
     }
