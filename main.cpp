@@ -7,19 +7,19 @@
 
 using namespace std;
 
-int main(){
-    const int Size = 80;
-    const double xMin = -10.0;
-    const double xMax = 10.0;
-    const double yMin = -1.0;
-    const double yMax = 1.0;
+int main(){ 
+    const int Size = 160;
+    const double xMin = -3.0;
+    const double xMax = 3.0;
+    const double yMin = -4.0;
+    const double yMax = 4.0;
     string grid[Size][Size];
     
 
     //Init grid - set all values to " "
     for(int x=0; x<Size;x++){
         for(int y=0; y<Size;y++){  
-            grid[y][x] = ". ";
+            grid[y][x] = "  ";
         }
     }
 
@@ -27,10 +27,20 @@ int main(){
     // Sample the function across the selected x range and map it to grid cells.
     for(int i=0; i<Size;i++){
         double x = xMin + i * (xMax - xMin) / (Size - 1);
+
+
+        //here lies the equation
+
+
         double yVal = sin(x);
+
+
+
+
+
         if(yVal >= yMin && yVal <= yMax){
             int gridY = static_cast<int>(round((yVal - yMin) * (Size - 1) / (yMax - yMin)));
-            grid[gridY][i] = "@ ";
+            grid[gridY][i] = "@  ";
         }
     }
 
@@ -47,7 +57,7 @@ int main(){
             cout << grid[y][x] << flush;
            //this_thread::sleep_for(chrono::milliseconds(2));
         }
-        this_thread::sleep_for(chrono::milliseconds(10));
+        //  this_thread::sleep_for(chrono::milliseconds(1));
         cout << endl;
     }
 
