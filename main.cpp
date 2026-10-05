@@ -4,6 +4,7 @@ using namespace std;
 
 int main(){
     cout << "Hello, World!" << endl;
+
     string grid[3][3] {
         // init with all 0
         {"0", "0", "0"},
@@ -11,9 +12,14 @@ int main(){
         {"0", "0", "0"}
     };
     
-
-    for(int i = 0; i < 3; i++){
-        cout << i << endl;
+    for(int x=0; x<3;x++){
+        for(int y=0; y<3;y++){  
+            cout << grid[y][x];
+        }
+        cout << endl;
     }
+    
+
+    cout << endl;
     return 0;
 }
