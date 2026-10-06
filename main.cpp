@@ -8,14 +8,15 @@
 using namespace std;
 
 int main(){ 
-    const int Size = 160;
-    const double xMin = -3.0;
-    const double xMax = 3.0;
-    const double yMin = -4.0;
-    const double yMax = 4.0;
+    const int Size = 200;
+    const double xMin = -1.0;
+    const double xMax = 1.0;
+    const double yMin = -1.5;
+    const double yMax = 1.5;
     string grid[Size][Size];
     
-
+    for(int b = 0; b < 10; b++)
+    {
     //Init grid - set all values to " "
     for(int x=0; x<Size;x++){
         for(int y=0; y<Size;y++){  
@@ -32,7 +33,7 @@ int main(){
         //here lies the equation
 
 
-        double yVal = sin(x);
+        double yVal = sin(x*b);
 
 
 
@@ -49,7 +50,7 @@ int main(){
     cout << "\x1b[?25l" << flush;
 
     //Outputs the grid
- for(int y=Size-1; y>=0;y--){
+    for(int y=Size-1; y>=0;y--){
 
      double yLabel = yMin + y * (yMax - yMin) / (Size - 1);
      cout << fixed << setprecision(2) << yLabel << "\t";
@@ -66,5 +67,8 @@ int main(){
     
 
     cout << endl;
+
+    //this_thread::sleep_for(chrono::milliseconds(250));
+    }
     return 0;
 }
